@@ -1,14 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-// const PORT = 3000
+const PORT = 3000
 const todoModel = require('./models/Todo')
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://newuser:Aadil122@cluster0.ljzpui0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/test')
 
 // POST: create task
 app.post('/task', (req,res) => {
@@ -45,9 +45,7 @@ app.delete('/delete/:id', (req,res) => {
     .catch(err => res.json(err)) 
 })
 
-// app.listen(PORT, ()=>{
-//     console.log(`Server running on port : ${PORT}`);
+app.listen(PORT, ()=>{
+    console.log(`Server running on port : ${PORT}`);
     
-// })
-
-module.exports = app;
+})
