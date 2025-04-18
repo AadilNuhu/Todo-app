@@ -2,25 +2,27 @@ import React from 'react'
 import { Add } from './Add'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+const api = import.meta.env.VITE_API_BASE_URL
+
 
 
 const Home = () => {
     const [todos, setTodos] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:3000/get')
+        axios.get(`${api}/get`)
             .then(result => setTodos(result.data))
             .catch(err => console.log(`Error : ${err}`))
 
     }, [])
 
     function handleEdit(id) {
-        axios.put('http://localhost:3000/update/' + id)
+        axios.put(`${api}/update/${id}`)
             .then(result => { location.reload() })
             .catch(err => console.log(`Error : ${err}`))
     }
 
     function handleDel(id) {
-        axios.delete('http://localhost:3000/delete/' + id)
+        axios.delete(`${api}/delete/${id}`)
             .then(result => { location.reload() })
             .catch(err => console.log(`Error : ${err}`))
     }

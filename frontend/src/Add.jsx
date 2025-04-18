@@ -1,11 +1,19 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
+const api = import.meta.env.VITE_API_BASE_URL
+
 
 export const Add = () => {
   const [inputValue,setInputValue] = useState()
+
+  
   function handleClick() {
-    axios.post('http://localhost:3000/task',{task:inputValue})
+    if (!inputValue || inputValue.trim() === "") {
+      return alert("Please enter a task!");
+    }
+    
+    axios.post(`${api}/task`,{task:inputValue})
     .then(result => {location.reload()})
     .catch(err => console.log(`Error : ${err}`))
 
