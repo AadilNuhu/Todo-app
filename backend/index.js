@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/test')
+mongoose.connect('mongodb+srv://newuser:Aadil122@cluster0.ljzpui0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 // POST: create task
 app.post('/task', (req,res) => {
