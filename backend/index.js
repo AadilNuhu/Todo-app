@@ -10,15 +10,6 @@ app.use(express.json())
 
 mongoose.connect('mongodb://localhost:27017/test')
 
-const cors = require("cors");
-
-app.use(cors({
-  origin: "https://mern-todo-app-pied.vercel.app", // your frontend
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
-
 app.post('/task', (req,res) => {
     const task = req.body.task
     todoModel.create({
